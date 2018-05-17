@@ -20,13 +20,32 @@ io.on('connection', (socket) => {			//server
 		console.log('user disconnected');
 	});
 
+
+	socket.emit('newMessage', {
+		from: 'admin@admin.com',
+		text: 'welcome to the chat',
+		createdAt: new Date().getTime()
+	});
+
+	socket.broadcast.emit('newMessage', {
+		from: 'admin@admin.com',
+		text: 'new user just joined',
+		createdAt: new Date().getTime()
+	});
+
 	socket.on('createMessage', (message) => {		//server
 		console.log('New Message', message);
-		io.emit('newMessage', {
+		io.emit('newMessage', {					//final way to emit messages-correct
 			from: message.from,
 			text: message.text,
 			createdAt: new Date().getTime()
 		});																//client
+
+		// socket.broadcast.emit('newMessage', {		//broadcasting
+		// 	from: message.from,										// everyone will see except you(the sender)
+		// 	text: message.text,
+		// 	createdAt: new Date().getTime()
+		// });
 	});
 });
 
