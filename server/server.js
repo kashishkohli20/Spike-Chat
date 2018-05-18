@@ -21,15 +21,14 @@ io.on('connection', (socket) => {			//server
 		console.log('user disconnected');
 	});
 
-
 	socket.emit('newMessage', generateMessage('Admin', 'Welcome to the chat app'));					//client
 
 	socket.broadcast.emit('newMessage', generateMessage('Admin', 'New User just joined'));  //client
 
-	socket.on('createMessage', (message) => {		//server
+	socket.on('createMessage', (message, callback) => {		//server
 		console.log('New Message', message);
 		io.emit('newMessage', generateMessage(message.from, message.text));//final way to emit messages-correct
-																			//client
+		callback('This is from the server');																	//client
 
 		// socket.broadcast.emit('newMessage', {		//broadcasting
 		// 	from: message.from,										// everyone will see except you(the sender)
