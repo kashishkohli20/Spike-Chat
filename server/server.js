@@ -30,11 +30,6 @@ io.on('connection', (socket) => {			//server
 		io.emit('newMessage', generateMessage(message.from, message.text));//final way to emit messages-correct
 		callback('This is from the server');																	//client
 
-		// socket.broadcast.emit('newMessage', {		//broadcasting
-		// 	from: message.from,										// everyone will see except you(the sender)
-		// 	text: message.text,
-		// 	createdAt: new Date().getTime()
-		// });
 	});
 
 	socket.on('createLocationMessage', (coords) => {
