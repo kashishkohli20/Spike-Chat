@@ -2,61 +2,30 @@
 <html lang="en" dir="ltr">
 	<head>
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+		<title>Join | ChatApp</title>
 		<link rel="stylesheet" href="/css/styles.css">
-		<title>Chat App</title>
 	</head>
-	<body class="chat">
-		<div class="chat__sidebar">
-			<h3>People</h3>
-			<div id="users">
+	<body class="centered-form">
+		<div class="centered-form__form">
+			<form class="" action="/chat.html">
+			<div class="form-field">
+				<h3>Join a Chat</h3>
+			</div>
+			<div class="form-field">
+				<label>Display Name</label>
+				<input type="text" name="name" autofocus autocomplete="off"/>
+			</div>
+			<div class="form-field">
+				<label>Room name</label>
+				<input type="text" name="room" autocomplete="off"/>
+			</div>
+			<div class="form-field">
+				<button>Join</button>
 
 			</div>
+
+		</form>
 		</div>
-
-		<div class="chat__main">
-			<ol class="chat__messages" id="messages"></ol>
-
-			<div class="chat__footer">
-				<form id="message-form">
-					<input type="text" name="message" placeholder="Message" autofocus autocomplete="off">
-					<button>Send</button>
-				</form>
-				<button id="send-location">Send Location</button>
-
-			</div>
-
-		</div>
-
-	<script src="/socket.io/socket.io.js" charset="utf-8"></script>
-	<script src="/js/libs/jquery-3.3.1.min.js" charset="utf-8"></script>
-	<script src="/js/libs/moment.js" charset="utf-8"></script>
-	<script src="/js/libs/mustache.js" charset="utf-8"></script>
-	<script src="/js/index.js" charset="utf-8"></script>
-	<script type="text/template" id="message-template">
-		<li class="message">
-			<div class="message__title">
-				<h4>{{from}}</h4>
-				<span>{{createdAt}}</span>
-			</div>
-			<div class="message__body">
-				<p>{{text}}</p>
-			</div>
-		</li>
-	</script>
-
-	<script type="text/template" id="location-message-template">
-		<li class="message">
-			<div class="message__title">
-				<h4>{{from}}</h4>
-				<span>{{createdAt}}</span>
-			</div>
-			<div class="message__body">
-				<p>
-					<a href={{url}} target="_blank">{{text}}</a>
-				</p>
-			</div>
-		</li>
-	</script>
 	</body>
 </html>
